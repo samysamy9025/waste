@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Calculator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+        }
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 400px;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #ff4e50;
+            margin-bottom: 20px;
+        }
+        .input-field {
+            margin: 20px 0;
+        }
+        .input-field input {
+            width: 90%;
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+            text-align: center;
+        }
+        button {
+            background: #ff6a88;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #ff4e50;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.5em;
+            animation: pop 0.5s;
+        }
+        @keyframes pop {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .emoji {
+            font-size: 2em;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>💖 Love Calculator 💖</h1>
+        <p>Calculate your love percentage and receive a surprise message!</p>
+        <div class="input-field">
+            <input type="text" id="name1" placeholder="Your Name">
+        </div>
+        <div class="input-field">
+            <input type="text" id="name2" placeholder="Your Crush's Name">
+        </div>
+        <button onclick="calculateLove()">Calculate 💕</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculateLove() {
+            const name1 = document.getElementById('name1').value.trim();
+            const name2 = document.getElementById('name2').value.trim();
+            const resultDiv = document.getElementById('result');
+
+            if (!name1 || !name2) {
+                resultDiv.innerHTML = '<span style="color: yellow;">⚠️ Please fill out both names!</span>';
+                return;
+            }
+
+            const lovePercentage = Math.floor(Math.random() * 101);
+            const surpriseMessages = [
+                'You two are a match made in heaven! 🌈✨',
+                'Love is in the air! 🌹💘',
+                'A perfect duo! 🎶🎵',
+                'Keep your hearts open! 💝💑',
+                'The stars are aligned for you! 🌟💖'
+            ];
+
+            const surpriseMessage = surpriseMessages[Math.floor(Math.random() * surpriseMessages.length)];
+
+            resultDiv.innerHTML = `
+                <p>${name1} ❤️ ${name2}</p>
+                <p>Your Love Percentage: <strong>${lovePercentage}%</strong></p>
+                <p class="emoji">${lovePercentage > 50 ? '😍🌹💞' : '😊💌💖'}</p>
+                <p>${surpriseMessage}</p>
+            `;
+        }
+    </script>
+</body>
+</html>
